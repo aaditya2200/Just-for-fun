@@ -18,8 +18,8 @@ public class SwingDemo1 implements ActionListener
     f.setSize(400,300);
     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    JLabel l1 = new JLabel("Length of the hypotenuse");
-    JLabel l2 = new JLabel("Length of the side adjacent to angle");
+    JLabel l1 = new JLabel("Enter x:");
+    JLabel l2 = new JLabel("Enter precision:");
     JLabel l3 = new JLabel("Cosine value is: ");
     JLabel l4 = new JLabel();
 
@@ -30,10 +30,20 @@ public class SwingDemo1 implements ActionListener
     b1.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            float hyp = Float.parseFloat(t1.getText());
-            float adj = Float.parseFloat(t2.getText());
-            String val = Float.toString(adj/hyp);
-            l4.setText(val);
+            int f = 1;
+            float sum = 1.0f;
+            float x = Float.parseFloat(t1.getText());
+            int pres = Integer.parseInt(t2.getText());
+            for (int i = 0; i < pres; i++)
+            {
+                for (int j = 1; j < i; j++)
+                {
+                    f = f * j;
+                }
+                sum += (Math.pow(-1, i+1) * x / f);
+
+            }
+            l4.setText(Float.toString(sum));
         }
     });
 
